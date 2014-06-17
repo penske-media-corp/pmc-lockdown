@@ -279,6 +279,22 @@ function pmc_lockdown_admin_notice() {
 add_action( 'admin_notices', 'pmc_lockdown_admin_notice' );
 
 /**
+ * Prevent comments while we're on lockdown
+ *
+ * @since 0.9.0 2011-08-13 Gabriel Koen
+ * @version 0.9.1 2011-08-16 Gabriel Koen
+ */
+function pmc_lockdown_close_comments( $open ) {
+    if ( defined('PMC_LOCKDOWN') ) {
+        return false;
+    }
+
+    return $open;
+}
+add_filter( 'comments_open', 'pmc_lockdown_close_comments', 99 );
+
+
+/**
  * Get the current user's role
  *
  * @since 0.9.0 2011-08-13 Gabriel Koen
