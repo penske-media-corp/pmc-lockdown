@@ -1,8 +1,8 @@
 === PMC Lockdown ===
-Contributors: pmcdotcom, mintindeed, IAmWilliamWallace
+Contributors: pmcdotcom, mintindeed, IAmWilliamWallace, sachinkraj
 Tags: maintenance
-Requires at least: 3.2
-Tested up to: 3.2.1
+Requires at least: 3.5
+Tested up to: 3.9.1
 Stable tag: 0.9.5
 
 Ability to enter maintenance lockdown mode: force-logout all non-administrators, prevent logins from non-administrators, and disable commenting.
@@ -24,18 +24,24 @@ Image by [Chris Randall](http://www.flickr.com/photos/chrisrandall/4608136274/);
 
 
 == Installation ==
+Like all other plugins, you need to follow some basic steps to install this plugin.
 
-Nothing goes in the plugins directory.
+1. Deploy `pmc_lockdown.php` to the `/wp-content/plugins/` directory. 
 
-1. Deploy `pmc_lockdown.php` to the `/wp-content/mu-plugins/` directory. Simply placing this file activates it. To deactivate it, move it from that location.
+2. Go to your plugins section under WordPress admin. You will see "PMC Lockdown" in the plugins list. Click on the activate.
 
-2. The user interface for turning the "Maintenance Lockdown" mode on and off is in the Settings | Privacy section of your site's adminstration system.
+3. You will see a new menu item will be added under Settings section. Click on "PMC Lockdown", from the left menu under Settings or click on the "Settings" link below the plugin name in WordPress Plugins page.
 
 == Frequently Asked Questions ==
 
 None yet!
 
 == Changelog ==
+
+= 1.0.0 =
+* WordPress compatibility bug fixes. Last tested 3.9.1
+* Plugin installation method changed to support later version of WordPress
+* Installation instrcutions updated
 
 = 0.9.5 =
 * Updating installation instructions to note settings location.  Props convissor
