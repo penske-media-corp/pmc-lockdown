@@ -6,7 +6,10 @@ Description: Ability to enter lockdown mode: force-logout all non-administrators
 Version: 0.9.5
 Author: PMC
 Author URI: http://engineering.pmc.com/
+License: GPLv2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
+defined( 'ABSPATH' ) or die();
 
 /**
  * Internationalization stub
@@ -24,13 +27,16 @@ define('PMC_LOCKDOWN_I18N', 'pmc-lockdown');
  *
  * @since 0.9.0 2011-08-13 Gabriel Koen
  * @version 0.9.1 2011-08-16 Gabriel Koen
+ * @version 0.1.0 2015-04-03 Javier Martinez
  */
 function pmc_lockdown_init() {
+
 	if ( get_option('pmc_lockdown', false) ) {
 		define('PMC_LOCKDOWN', true);
 	}
+
 }
-add_action( 'muplugins_loaded','pmc_lockdown_init' );
+add_action( 'plugins_loaded','pmc_lockdown_init' );
 
 /**
  * Prevent comments while we're on lockdown
@@ -57,7 +63,7 @@ add_filter( 'comments_open', 'pmc_lockdown_close_comments', 99 );
 function pmc_lockdown_admin_notice() {
 	if ( defined('PMC_LOCKDOWN') ) {
 		?><div id="message" class="updated fade">
-			<p><?php printf( __('Site is on maintenance lockdown.  <a href="%s">Settings</a>', PMC_LOCKDOWN_I18N), admin_url('options-privacy.php') ); ?></p>
+			<p><?php printf( __('Site is on maintenance lockdown.  <a href="%s">Settings</a>', PMC_LOCKDOWN_I18N), admin_url('options-general.php') ); ?></p>
 		</div><?php
 	}
 }
@@ -126,9 +132,9 @@ function pmc_lockdown_settings() {
 		add_settings_field('pmc_lockdown',
 		__('Maintenance Lockdown', PMC_LOCKDOWN_I18N),
 		'pmc_lockdown_setting_field',
-		'privacy');
+		'general');
 
-		register_setting( 'privacy', 'pmc_lockdown' );
+		register_setting( 'general', 'pmc_lockdown' );
 	}
 }
 add_action( 'admin_init', 'pmc_lockdown_settings' );
